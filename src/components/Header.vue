@@ -22,4 +22,7 @@
 		height: 96px;
 		width: 96px;
 	}
+	h1 {
+		font-size: 2rem;
+	}
 </style>

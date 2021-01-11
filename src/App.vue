@@ -2,21 +2,51 @@
 	<div>
 		<Header></Header>
 		<Search v-on:word="onWordChange"></Search>
+		<CryptoList v-bind:crypts="cryptoData"></CryptoList>
+		{{ cryptoData.length }}
+		<h3>{{ cryptoData.price }}</h3>
 	</div>
 </template>
 <script>
 	import Header from "./components/Header";
 	import Search from "./components/Search";
+	import CryptoList from "./components/CryptoList";
+	import axios from "axios";
+	const API_KEY = "ed599676c60cb5b0b369519d8cadaa8a";
+
 	export default {
+		data: function() {
+			return {
+				cryptoData: []
+			};
+		},
 		name: "App",
 		components: {
 			Header,
-			Search
+			Search,
+			CryptoList
 		},
 		methods: {
 			onWordChange: function(searchTerm) {
 				console.log(searchTerm);
 			}
+		},
+		mounted() {
+			axios
+				.get(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY}`, {
+					params: {
+						"per-page": "100",
+						"page": 1,
+						"interval": `1h,1d`
+					}
+				})
+				.then((response) => {
+					this.cryptoData = response.data;
+					console.log(response.data);
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		}
 	};
 </script>
@@ -25,6 +55,7 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+		font-size: 16px;
 	}
 	body {
 		font-family: "Baloo 2";
