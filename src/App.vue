@@ -1,10 +1,8 @@
 <template lang="">
 	<div>
-		<Header></Header>
-		<Search v-on:word="onWordChange"></Search>
-		<CryptoList v-bind:crypts="cryptoData"></CryptoList>
-		{{ cryptoData.length }}
-		<h3>{{ cryptoData.price }}</h3>
+		<Header />
+		<Search v-on:word="onWordChange" />
+		<CryptoList v-bind:crypts="cryptoData" />
 	</div>
 </template>
 <script>
@@ -61,11 +59,14 @@
 		font-family: "Baloo 2";
 		font-weight: lighter;
 		color: #e7e7de;
-		background: rgb(0, 136, 145);
+		background-image: url("./img/background.jpg");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		/* background: rgb(0, 136, 145);
 		background: radial-gradient(
 			circle,
 			rgba(0, 136, 145, 1) 0%,
 			rgba(15, 48, 87, 1) 100%
-		);
+		); */
 	}
 </style>

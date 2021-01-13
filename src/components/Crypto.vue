@@ -2,9 +2,20 @@
 	<div>
 		<li>
 			<div class="card">
-				<img v-bind:src="cryptInfo.logo_url" alt="Cryptocurrency Image" />
-				<h3>{{ cryptInfo.name }}</h3>
-				<h2>${{ cryptInfo.price }}</h2>
+				<div class="face front">
+					<img v-bind:src="cryptInfo.logo_url" alt="Cryptocurrency Image" />
+					<h3>{{ cryptInfo.name }}</h3>
+					<p>${{ cryptInfo.price }}</p>
+				</div>
+				<div class="face back">
+					<h4><span>Symbol:</span> {{ cryptInfo.symbol }}</h4>
+					<hr />
+					<h4><span>Market Cap:</span> ${{ cryptInfo.market_cap }}</h4>
+					<hr />
+					<h4><span>Maximum Supply:</span> {{ cryptInfo.max_supply }}</h4>
+					<hr />
+					<h4><span>All Time High:</span> ${{ cryptInfo.high }}</h4>
+				</div>
 			</div>
 		</li>
 	</div>
@@ -19,28 +30,62 @@
 	li {
 		list-style: none;
 	}
-	.card {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-		width: 300px;
-		height: 300px;
-		padding: 25px;
-		border-radius: 10px;
-		background-color: teal;
-	}
 	h3 {
 		text-transform: uppercase;
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		text-align: center;
+		margin-bottom: 20px;
+		letter-spacing: 2px;
 	}
-	h2 {
-		font-size: 2.5rem;
+	h4 {
+		margin: 10px auto;
+		font-size: 1.2rem;
+	}
+	p {
+		font-size: 2rem;
+	}
+	span {
+		font-size: 1.3rem;
 	}
 	img {
 		width: 96px;
 		height: 96px;
 		margin: 20px auto;
+	}
+	.card {
+		position: relative;
+		width: 300px;
+		height: 300px;
+		perspective: 500px;
+	}
+	.card .face {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 128, 128, 0.2);
+		box-shadow: 10px 10px 10px rgba(46, 54, 0, 0.03);
+		backdrop-filter: blur(10px);
+		border-radius: 10px;
+		transform-style: preserve-3d;
+		transition: 1s;
+		backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+	}
+	.front {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	.card:hover .face.front {
+		transform: rotateY(180deg);
+	}
+	.card .face.back {
+		transform: rotateY(180deg);
+		padding: 20px;
+		text-align: center;
+	}
+	.card:hover .face.back {
+		transform: rotateY(360deg);
 	}
 </style>

@@ -22,7 +22,7 @@
 <style scoped>
 	.grid {
 		width: 80%;
-		margin: 100px auto;
+		margin: 80px auto;
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
