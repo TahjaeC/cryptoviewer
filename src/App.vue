@@ -7,7 +7,6 @@
 </template>
 <script>
 	import Header from "./components/Header";
-	import Search from "./components/Search";
 	import CryptoList from "./components/CryptoList";
 	import axios from "axios";
 	const API_KEY = "ed599676c60cb5b0b369519d8cadaa8a";
@@ -21,7 +20,6 @@
 		name: "App",
 		components: {
 			Header,
-			Search,
 			CryptoList
 		},
 		methods: {
@@ -62,11 +60,5 @@
 		background-image: url("./img/background.jpg");
 		background-repeat: no-repeat;
 		background-attachment: fixed;
-		/* background: rgb(0, 136, 145);
-		background: radial-gradient(
-			circle,
-			rgba(0, 136, 145, 1) 0%,
-			rgba(15, 48, 87, 1) 100%
-		); */
 	}
 </style>

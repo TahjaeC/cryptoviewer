@@ -3,18 +3,18 @@
 		<li>
 			<div class="card">
 				<div class="face front">
-					<img v-bind:src="cryptInfo.logo_url" alt="Cryptocurrency Image" />
+					<img v-bind:src="cryptInfo.logo_url" alt="Crypto Logo" />
 					<h3>{{ cryptInfo.name }}</h3>
-					<p>${{ cryptInfo.price }}</p>
+					<p>{{ price }}</p>
 				</div>
 				<div class="face back">
-					<h4><span>Symbol:</span> {{ cryptInfo.symbol }}</h4>
+					<h4><span>Symbol :</span> {{ cryptInfo.symbol }}</h4>
 					<hr />
-					<h4><span>Market Cap:</span> ${{ cryptInfo.market_cap }}</h4>
+					<h4><span>Market Cap :</span> {{ cap }}</h4>
 					<hr />
-					<h4><span>Maximum Supply:</span> {{ cryptInfo.max_supply }}</h4>
+					<h4><span>Maximum Supply :</span> {{ supply }}</h4>
 					<hr />
-					<h4><span>All Time High:</span> ${{ cryptInfo.high }}</h4>
+					<h4><span>All Time High :</span> {{ high }}</h4>
 				</div>
 			</div>
 		</li>
@@ -23,6 +23,26 @@
 <script>
 	export default {
 		name: "Crypto",
+		data: function() {
+			return {
+				price: new Intl.NumberFormat("en-US", {
+					style: "currency",
+					currency: "USD",
+					maximumSignificantDigits: 7
+				}).format(this.cryptInfo.price),
+				cap: new Intl.NumberFormat("en-US", {
+					style: "currency",
+					currency: "USD",
+					maximumSignificantDigits: 7
+				}).format(this.cryptInfo.market_cap),
+				supply: new Intl.NumberFormat().format(this.cryptInfo.max_supply),
+				high: new Intl.NumberFormat("en-US", {
+					style: "currency",
+					currency: "USD",
+					maximumSignificantDigits: 7
+				}).format(this.cryptInfo.high)
+			};
+		},
 		props: ["cryptInfo"]
 	};
 </script>
