@@ -1,13 +1,14 @@
 <template lang="">
 	<div>
 		<Header />
-		<Search v-on:word="onWordChange" />
 		<CryptoList v-bind:crypts="cryptoData" />
+		<Spinner v-if="!CryptoList" />
 	</div>
 </template>
 <script>
 	import Header from "./components/Header";
 	import CryptoList from "./components/CryptoList";
+	import Spinner from "./components/Spinner";
 	import axios from "axios";
 	const API_KEY = "ed599676c60cb5b0b369519d8cadaa8a";
 
@@ -20,12 +21,8 @@
 		name: "App",
 		components: {
 			Header,
-			CryptoList
-		},
-		methods: {
-			onWordChange: function(searchTerm) {
-				console.log(searchTerm);
-			}
+			CryptoList,
+			Spinner
 		},
 		mounted() {
 			axios
