@@ -84,10 +84,12 @@
 		height: 100%;
 		background-color: rgba(0, 128, 128, 0.2);
 		box-shadow: 10px 10px 10px rgba(46, 54, 0, 0.03);
-		backdrop-filter: blur(10px);
+		backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(8px);
+		-moz-backdrop-filter: blur(8px);
 		border-radius: 10px;
 		transform-style: preserve-3d;
-		transition: 1s;
+		transition: 0.5s;
 		backface-visibility: hidden;
 		-moz-backface-visibility: hidden;
 	}
