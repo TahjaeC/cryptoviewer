@@ -1,4 +1,4 @@
-cryptoviewer
+Cryptoviewer
 
 This is my second vue project. I used a free API provided by Nomics (Nomics Cryptocurrency & Bitcoin API (1.0.0)). This simple web application fetches information on various cryptocurrencies. I had intended to include a search function but the free API does not allow filtering. I had also intended to display the data in a paginated format but I got lazy and moved on to another project ;).
 
