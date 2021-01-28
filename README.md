@@ -8,7 +8,7 @@ Stephen Grider for his Udemy course on Vue
 
 Nomics for their free API
 
-Stackoverflow named "tao". I had some issues with loading the spinner and this user gave me a detailed solution
+Stackoverflow user named "tao". I had some issues with loading the spinner and this user gave me a detailed solution
 
 A youtube channel called "OnlineTutorials" for his CSS glass effect tutorial
 
