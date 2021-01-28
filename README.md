@@ -12,4 +12,4 @@ Stackoverflow user named "tao". I had some issues with loading the spinner and t
 
 A youtube channel called "OnlineTutorials" for his CSS glass effect tutorial
 
-Whitout these individuals this project would have never been done completed properly
+Without these individuals this project would have never completed properly.
