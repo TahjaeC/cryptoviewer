@@ -1,6 +1,7 @@
 <template lang="">
 	<div>
 		<Header />
+		<Search v-on:wordChange="onWordChange" />
 		<Spinner v-if="!hasData" />
 		<CryptoList v-else v-bind:crypts="cryptoData" />
 	</div>
@@ -9,6 +10,7 @@
 	import Header from './components/Header';
 	import CryptoList from './components/CryptoList';
 	import Spinner from './components/Spinner';
+	import Search from './components/Search.vue';
 	import axios from 'axios';
 	const API_KEY = 'd9b61769f787361d94b1baf0cad18a7d6c4f08ca';
 
@@ -25,7 +27,8 @@
 		components: {
 			Header,
 			CryptoList,
-			Spinner
+			Spinner,
+			Search
 		},
 		mounted() {
 			axios
@@ -43,6 +46,23 @@
 				.catch(function(error) {
 					console.log(error);
 				});
+		},
+		methods: {
+			onWordChange(searchTerm) {
+				this.search(searchTerm);
+			},
+			search(searchTerm) {
+				axios
+					.get(
+						`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY}&ids=${searchTerm}`
+					)
+					.then((response) => {
+						this.cryptoData = response.data;
+					})
+					.catch(function(error) {
+						console.log(error);
+					});
+			}
 		}
 	};
 </script>
