@@ -1,14 +1,14 @@
 <template lang="">
 	<div>
 		<div class="spinner-container">
-			<orbit-spinner :animation-duration="1200" :size="350" :color="'#fff'" />
+			<orbit-spinner :animation-duration="1200" :size="200" :color="'#fff'" />
 		</div>
 	</div>
 </template>
 <script>
-	import { OrbitSpinner } from "epic-spinners"; //Epic spinner package
+	import { OrbitSpinner } from 'epic-spinners'; //Epic spinner package
 	export default {
-		name: "Spinner",
+		name: 'Spinner',
 		components: {
 			OrbitSpinner
 		}

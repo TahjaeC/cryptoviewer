@@ -10,7 +10,7 @@
 	import CryptoList from './components/CryptoList';
 	import Spinner from './components/Spinner';
 	import axios from 'axios';
-	const API_KEY = 'ed599676c60cb5b0b369519d8cadaa8a';
+	const API_KEY = 'd9b61769f787361d94b1baf0cad18a7d6c4f08ca';
 
 	export default {
 		data: () => ({
@@ -18,7 +18,7 @@
 		}),
 		computed: {
 			hasData() {
-				return !!this.cryptoData.length; //Boolena to test if crypto info is loaded
+				return !!this.cryptoData.length; //Boolean to test if crypto info is loaded
 			}
 		},
 		name: 'App',
