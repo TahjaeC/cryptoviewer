@@ -1,6 +1,6 @@
 <template lang="">
 	<div class="container">
-		<input type="text" placeholder="Search..." v-on:input="onInput" />
+		<input type="text" placeholder="Search Top 100" v-on:input="onInput" />
 	</div>
 </template>
 <script>
@@ -8,7 +8,7 @@
 		name: 'Search',
 		methods: {
 			onInput: function(event) {
-				// console.log(event.target.value); //Get chacracter input
+				console.log(event.target.value); //Get chacracter input
 				this.$emit('wordChange', event.target.value); //Passing data up to the App.vue
 			}
 		}
@@ -21,6 +21,7 @@
 		align-items: center;
 	}
 	input {
+		font-family: 'Baloo 2', Helvetica, serif;
 		margin-top: 50px;
 		width: 400px;
 		height: 45px;
