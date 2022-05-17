@@ -1,7 +1,6 @@
 <template lang="">
 	<div>
 		<Header />
-		<Search v-on:wordChange="onWordChange" />
 		<Spinner v-if="!hasData" />
 		<CryptoList v-else v-bind:crypts="cryptoData" />
 	</div>
@@ -10,9 +9,8 @@
 	import Header from './components/Header';
 	import CryptoList from './components/CryptoList';
 	import Spinner from './components/Spinner';
-	import Search from './components/Search.vue';
 	import axios from 'axios';
-	const API_KEY = 'd9b61769f787361d94b1baf0cad18a7d6c4f08ca';
+	import API_KEY from '../key';
 
 	export default {
 		data: () => ({
@@ -21,42 +19,31 @@
 		computed: {
 			hasData() {
 				return !!this.cryptoData.length; //Boolean to test if crypto info is loaded
-			}
+			},
+			page: 1
 		},
 		name: 'App',
 		components: {
 			Header,
-			Search,
 			CryptoList,
 			Spinner
 		},
 		mounted() {
-			this.search('');
-		},
-		methods: {
-			onWordChange(searchTerm) {
-				this.search(searchTerm);
-			},
-			search(searchTerm) {
-				axios
-					.get(
-						`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY}&ids=${searchTerm}`,
-						{
-							params: {
-								'per-page': '100',
-								'page': 1,
-								'rank': 1
-							}
-						}
-					)
-					.then((response) => {
-						this.cryptoData = response.data;
-						// console.log(response.data);
-					})
-					.catch(function(error) {
-						console.log(error);
-					});
-			}
+			axios
+				.get(`https://api.nomics.com/v1/currencies/ticker?key=${API_KEY}`, {
+					params: {
+						'per-page': '100',
+						'page': 1,
+						'rank': 1
+					}
+				})
+				.then((response) => {
+					this.cryptoData = response.data;
+					// console.log(response.data);
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		}
 	};
 </script>
