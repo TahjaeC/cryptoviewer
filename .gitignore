@@ -2,6 +2,11 @@
 node_modules
 /dist
 
+#Firebase files
+.firebase
+firebase.json
+.firebaserc
+firebase-debug.log
 #API Key file
 key.js
 
